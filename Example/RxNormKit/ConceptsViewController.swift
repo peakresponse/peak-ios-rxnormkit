@@ -20,13 +20,23 @@ class ConceptsViewController: UITableViewController, UIDocumentPickerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        performQuery()
+    }
 
+    func performQuery() {
+        notificationToken?.invalidate()
+        notificationToken = nil
+        let realm = RxNRealm.open()
         results = RxNRealm.open().objects(RxNConcept.self).sorted(by: [
             SortDescriptor(keyPath: "rxcui", ascending: true),
             SortDescriptor(keyPath: "name", ascending: true)
         ])
-        notificationToken = results?.observe { [weak self] (changes) in
-            self?.didObserveRealmChanges(changes)
+        if realm.configuration.readOnly {
+            tableView.reloadData()
+        } else {
+            notificationToken = results?.observe { [weak self] (changes) in
+                self?.didObserveRealmChanges(changes)
+            }
         }
     }
 
@@ -76,7 +86,9 @@ class ConceptsViewController: UITableViewController, UIDocumentPickerDelegate {
     }
 
     @IBAction func openPressed() {
-
+        let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeItem)], in: .open)
+        picker.delegate = self
+        present(picker, animated: true)
     }
 
     @IBAction func exportPressed() {
@@ -102,6 +114,13 @@ class ConceptsViewController: UITableViewController, UIDocumentPickerDelegate {
                 self?.hideSpinner()
             }
         }
+    }
+
+    func openRealm(from url: URL) {
+        showSpinner()
+        RxNRealm.configure(url: url, isReadOnly: true)
+        performQuery()
+        hideSpinner()
     }
 
     // MARK: - UIDocumentPickerDelegate
@@ -132,6 +151,8 @@ class ConceptsViewController: UITableViewController, UIDocumentPickerDelegate {
                     self?.hideSpinner()
                 }
             }
+        } else if url.pathExtension == "realm" {
+            openRealm(from: url)
         }
     }
 
