@@ -12,7 +12,7 @@ code files and generate a compacted Realm database that can be bundled into an i
 
   For example, the full Current Prescribable list:
 
-  https://download.nlm.nih.gov/rxnorm/RxNorm_full_prescribe_01032022.zip
+  https://download.nlm.nih.gov/rxnorm/RxNorm_full_prescribe_10022023.zip
 
 2. To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
