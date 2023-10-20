@@ -4,7 +4,7 @@ platform :ios, '12.4'
 
 target 'RxNormKit_Example' do
   pod 'RxNormKit', :path => '../'
-  pod 'RealmSwift', '10.11.0'
+  pod 'RealmSwift', '~> 10.43'
   pod 'SwiftLint'
 
   target 'RxNormKit_Tests' do
