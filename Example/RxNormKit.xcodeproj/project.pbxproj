@@ -202,7 +202,7 @@
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			packageReferences = (
-				459DC4DE2DADC7B100761142 /* XCLocalSwiftPackageReference "../../RxNormKit" */,
+				459DC4E42DADC88400761142 /* XCLocalSwiftPackageReference "../../rxnormkit" */,
 			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
@@ -513,6 +513,10 @@
 		459DC4DE2DADC7B100761142 /* XCLocalSwiftPackageReference "../../RxNormKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../RxNormKit;
+		};
+		459DC4E42DADC88400761142 /* XCLocalSwiftPackageReference "../../rxnormkit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../rxnormkit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
