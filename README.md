@@ -12,7 +12,7 @@ code files and generate a compacted Realm database that can be bundled into an i
 
   For example, the full Current Prescribable list:
 
-  https://download.nlm.nih.gov/rxnorm/RxNorm_full_prescribe_01032022.zip
+  https://download.nlm.nih.gov/rxnorm/RxNorm_full_prescribe_04072025.zip
 
 2. To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
@@ -29,11 +29,9 @@ option is enabled in the toolbar.
 
 ## Installation
 
-1. Include RxNormKit in your iOS app project using [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
+1. Include ICD10Kit in your iOS app project using Swift Package Manger, referencing this repository:
 
-  ```ruby
-  pod 'RxNormKit'
-  ```
+  https://github.com/peakresponse/peak-ios-rxnormkit
 
 2. Add the exported Realm database file generated previously to your iOS app project.
 
@@ -74,7 +72,7 @@ Francis Li, francis@peakresponse.net
 ## License
 
 RxNormKit  
-Copyright (C) 2022 Peak Response Inc.
+Copyright &copy; 2025 Peak Response Inc.
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public

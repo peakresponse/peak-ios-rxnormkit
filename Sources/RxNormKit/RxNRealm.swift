@@ -5,22 +5,23 @@
 //  Created by Francis Li on 12/10/21.
 //
 
+import Foundation
 import RealmSwift
 
 open class RxNRealm {
-    public static var main: Realm!
-    public static var mainURL: URL?
-    public static var mainMemoryIdentifier: String? = "rxnorm.realm"
-    public static var isMainReadOnly = false
+    @MainActor public static var main: Realm!
+    @MainActor public static var mainURL: URL?
+    @MainActor public static var mainMemoryIdentifier: String? = "rxnorm.realm"
+    @MainActor public static var isMainReadOnly = false
     
-    public static func configure(url: URL?, isReadOnly: Bool) {
+    @MainActor public static func configure(url: URL?, isReadOnly: Bool) {
         RxNRealm.main = nil
         RxNRealm.mainURL = url
         RxNRealm.isMainReadOnly = isReadOnly
         RxNRealm.mainMemoryIdentifier = url != nil ? nil : "rxnorm.realm"
     }
 
-    public static func open() -> Realm {
+    @MainActor public static func open() -> Realm {
         if Thread.current.isMainThread && RxNRealm.main != nil {
             if !RxNRealm.main.configuration.readOnly {
                 RxNRealm.main.refresh()
